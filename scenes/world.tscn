@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://b05mpj3px7u2b"]
+
+[ext_resource type="MeshLibrary" uid="uid://c61qdcj33vs6h" path="res://Tileset/tileset.tres" id="1_xgbl5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_40w6j"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_407bu"]
+sky_material = SubResource("ProceduralSkyMaterial_40w6j")
+
+[sub_resource type="Environment" id="Environment_ouox4"]
+background_mode = 2
+sky = SubResource("Sky_407bu")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ouox4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, -0.189381, 0.746818, 0.637493, -0.462747, 0.50474, -0.728768, 0.452898, 4.70525, -12.1878)
+shadow_enabled = true
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh_library = ExtResource("1_xgbl5")
+cell_size = Vector3(1, 1, 1)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(1, 65535, 1441792, 1, 0, 1441792, 1, 65534, 1441792, 1, 1, 1441792, 1, 2, 1441792, 1, 65533, 1441792, 1, 3, 1441792, 1, 4, 1441792, 1, 65532, 1441792, 0, 65532, 1441794, 0, 65533, 1441794, 0, 65534, 1441794, 0, 1, 1441794, 0, 2, 1441794, 0, 3, 1441794, 0, 4, 1441794, 0, 0, 1441794, 0, 65535, 1441794, 65535, 65535, 1441794, 65535, 65534, 1441794, 65535, 65533, 1441794, 65535, 65532, 1441794, 65535, 0, 1441794, 65535, 1, 1441794, 65535, 2, 1441794, 65535, 3, 1441794, 65535, 4, 1441794)
+}
