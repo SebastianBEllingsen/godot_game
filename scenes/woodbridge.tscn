@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dv4akkybkfr4"]
+
+[ext_resource type="ArrayMesh" uid="uid://dkmatiphj02jh" path="res://models/Wood_bridge.obj" id="1_vtxxo"]
+[ext_resource type="Texture2D" uid="uid://buu4due872q8w" path="res://models/wood_bridge.png" id="2_7f1cn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dv6an"]
+albedo_texture = ExtResource("2_7f1cn")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ky6fs"]
+points = PackedVector3Array(3.13891, 0.160417, 4.34404, 6.45789, 0.160417, -2.14915, 6.45789, 0.160417, -15.7057, 5.01399, -0.128139, 2.4693, -14.0295, 0.160417, 3.47716, 4.14764, 0.160417, -15.7057, -14.0295, 0.160417, 5.78533, -0.468847, 0.160417, 5.78533, 5.73594, 0.160417, 1.60242, 5.15838, 0.160417, 2.32412, 5.88033, 0.160417, 1.16898, 2.12818, 0.160417, 4.77748)
+
+[node name="Woodbridge" type="Node3D"]
+
+[node name="WoodBridge" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.22078, 0, -1.7619)
+mesh = ExtResource("1_vtxxo")
+surface_material_override/0 = SubResource("StandardMaterial3D_dv6an")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="WoodBridge"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WoodBridge/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_ky6fs")
