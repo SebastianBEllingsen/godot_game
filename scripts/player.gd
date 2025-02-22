@@ -17,14 +17,22 @@ const FOV_CHANGE = 1.5
 @onready var head = $head
 @onready var camera = $head/Camera3D
 @onready var anim_player= $AnimationPlayer
+@onready var view_check = $"../TextureRect"
+
+var show_cam=false
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
+	view_check.visible = false
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * sensitivity)
 		camera.rotate_x(-event.relative.y * sensitivity)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-70), deg_to_rad(90))
+
+func _input(event):
+	if Input.is_action_just_pressed("cam"):
+		view_check.visible = !view_check.visible
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
